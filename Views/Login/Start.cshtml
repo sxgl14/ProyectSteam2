@@ -1,0 +1,49 @@
+@model ProyectSteam2.Models.LoginVM;
+@{
+  ViewData["Title"] = "Inicio de Sesión";
+}
+@{
+  Layout = null;
+}
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/logincss/Start.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/ProyectSteam.styles.css" asp-append-version="true" />
+
+<body class="body-log">
+  <div class="log"><br><br>
+    <div class="text-center">
+      <h1 class="display-4 tit-ste text-white">SteamProyect</h1>
+    </div>
+    <div class="login-box">
+      <h2>Iniciar Sesión</h2>
+      <form asp-controller="Login" asp-action="Start" method="post">
+        <div class="user-box">
+          <input type="text" asp-for="NameU" required="">
+          <label>Usuario o Correo</label>
+        </div>
+        <div class="user-box">
+          <input type="password" asp-for="Pass" required="">
+          <label>Contraseña</label>
+        </div>
+        <div class="div-ingre">
+          <button>Ingresar</button>
+        </div><br>
+        <div>
+          @if(ViewData["Mensaje"] != null)
+          {
+            <div class="alert alert-danger text-center" role="alert">
+              @ViewData["Mensaje"]
+            </div>
+          }
+        </div>
+      </form>
+    </div>
+  </div> <!--Fin del div login -->
+  <div class="div_reg">
+    <p class="p-log">¿Es la primera vez que usas <br> ProyectSteam?</p>
+    <button onclick="location.href='Create'">
+      ¡Crea una cuenta!
+    </button>
+  </div>
+</body>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProyectSteam</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Shared/_Layout.cshtml.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProyectSteam.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="container-fluid">
+                <div class="links">
+                    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">ProyectSteam</a>
+                    <a class="nav-link" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
+                    <a class="nav-link" asp-area="" asp-controller="Main" asp-action="Games">Mis juegos</a>
+                </div>
+                <div class="clo-ses">
+                    <div class="link-close">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Salir">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="contain">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <footer>
+        &copy; 2024 - ProyectSteam
+    </footer>
+</body>
+</html>

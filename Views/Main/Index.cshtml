@@ -1,0 +1,153 @@
+@model GamCatVM
+
+@using ProyectSteam2.Models;
+@using ProyectSteam2.Controllers;    
+@using System.Security.Claims;
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Maincss/Index.css" asp-append-version="true" />
+
+    @{
+        ViewData["Title"] = "Bienvenidos a LittleSteam";
+    }
+</head>
+<body>
+    <div class="text-center">
+
+    @if(User.Identity!.IsAuthenticated)
+    {
+        <h1 class="wel">Bienvenido
+            @User.Claims.Where(
+                x => x.Type == ClaimTypes.Name
+            ).Select(x => x.Value).SingleOrDefault()
+        </h1>
+    }
+    </div>
+    <div class="div-padre">
+        <!-- Sección de todas las categorias -->
+        <Section id="sec-cat">
+            <h3>Categorias</h3>
+                @foreach (var category in Model.categs)
+                {
+                    <p id="nam-cat">@category.NameCat</p>
+                }
+        </Section>
+        @if(ViewData["MensajeError"] != null)
+        {
+            <div class="alert alert-danger text-center" role="alert">
+                @ViewData["MensajeError"]
+            </div>
+        }
+        <Section id="bar-game">
+            <!-- Barra de busqueda -->
+            <form asp-controller="Main" asp-action="Index" method="get" class="search-container" id="b">
+                    <input type="text" name="search" class="search-bar" placeholder="Buscar...">
+                    <a type="submit"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+            </form>
+
+            <!-- Botones de todos los juegos -->
+            <div id="cont-butt">
+                @foreach (var item in Model.cons_gam)
+                {
+                    <button class="butt-game" game-name="@item.NameG" game-creator="@item.Creator" game-categories="@string.Join(", ", item.NameCat)" game-price="@string.Join("'$'", item.Price)" game-img="@item.ImgGame">
+                        <div class="div-butt">
+                            <div>
+                                <div id="img-game">
+                                    <img src="@item.ImgGame" alt="@item.NameG">
+                                </div>
+                            </div>
+                            <div>
+                                <div id="game-creat">
+                                    <div id="name-game">
+                                        @item.NameG
+                                    </div>
+                                    <div class="creat">
+                                        @item.Creator
+                                    </div>
+                                </div>
+                                <div id="descrip">
+                                    @item.Descript
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-butt">
+                            <div class="cate-padre">
+                                @foreach (var category in item.NameCat)
+                                {
+                                    <div id="categorias">
+                                        @category
+                                    </div>
+                                }
+                            </div>
+                            <div class="price">
+                                $@item.Price
+                            </div>
+                        </div>
+                    </button>
+                }
+            </div>
+        </Section>
+    </div>
+
+    <!-- Ventana flotante -->
+    <div id="Modal" class="modal">
+        <div class="modal-box">
+            <div id="mod-gamecreat">
+                <h2 id="modal-game-name"></h2>
+                <p id="modal-game-creator"></p>
+            </div>
+            <p id="modal-game-categories"></p>
+            <div id="buttons-price">
+                <button id="closeModal">Cerrar</button>
+                @using (Html.BeginForm("Buy", "Main"))
+                {
+                    <input type="hidden" name="NameGame" id="NameGame" />
+                    <input type="hidden" name="idUser" value="@User.Claims.Where(x => x.Type == ClaimTypes.Name).Select(x => x.Value).SingleOrDefault()" />
+                    <input type="submit" value="Comprar" id="butt-comp"/>
+                }
+                <p id="modal-game-price"></p>                
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var modal = document.getElementById("Modal");
+
+        // Iterar sobre cada botón de juego
+        document.querySelectorAll(".butt-game").forEach(function(button) {
+        button.addEventListener("click", function() {
+            
+            var gameName = button.getAttribute("game-name");
+            var gameCreator = button.getAttribute("game-creator");
+            var gameCategories = button.getAttribute("game-categories");
+            var gamePrice = button.getAttribute("game-price");
+
+            // Mostrar linformación en el modal
+            document.getElementById("modal-game-name").innerHTML = gameName;
+            document.getElementById("modal-game-creator").innerHTML = gameCreator;
+            document.getElementById("modal-game-categories").innerHTML = gameCategories;
+            document.getElementById("modal-game-price").innerHTML = gamePrice;
+            document.getElementById("NameGame").value = gameName;
+
+            // Mostrar la ventana flotante
+            modal.style.display = "block";
+        });
+        });
+
+        // Agregar evento de click al botón de cierre de la ventana flotante
+        document.getElementById("closeModal").addEventListener("click", function() {
+        modal.style.display = "none";
+        });
+        document.querySelector('#b input').addEventListener('input', function(event) {
+            this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+@model IEnumerable<GamUseDTO>
+
+@using ProyectSteam2.Models;
+@using ProyectSteam2.Controllers;
+@using ProyectSteam2.Models.DTOs;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Maincss/Games.css" asp-append-version="true" />
+
+    @{
+        ViewData["Tittle"] = "Juegos Comprados";
+    }
+</head>
+<body>
+    <div id="div-padre">
+        <div id="div-game">
+            @foreach(var i in Model)
+            {
+                <div id="box-game">
+                    <div id="img-game">
+                        <img src="@i.ImgGame" alt="@i.NameG">
+                    </div>
+                    <div id="det">
+                        <h3 id="name-game">@i.NameG</h3>
+                        <h4 id="name-creator">@i.Creator</h4>
+                        <div class="sell-date">
+                            <p id="date-game">Lanzamiento: @i.DateR</p>
+                            <p id="sell">COMPRADO</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

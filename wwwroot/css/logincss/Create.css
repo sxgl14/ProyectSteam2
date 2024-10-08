@@ -1,0 +1,123 @@
+.body-log{
+    height: auto;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(41, 39, 39);
+}
+.log{
+    background-image: url('../../image/fondo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 45rem;
+}
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -60%);
+    background: rgba(18, 19, 78, 0.934);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.771);
+    border-radius: 10px;
+}
+
+.login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+.login-box .user-box {
+    position: relative;
+}
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+.login-box .user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
+}
+
+.login-box form button {
+    position: relative;
+    padding: 10px 20px;
+    color: #03e9f4;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: .5s;
+    margin-top: 10px;
+    letter-spacing: 3px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+} 
+.login-box form button:hover{
+    background: linear-gradient(rgba(18, 19, 78, 0.934), rgba(72, 26, 145, 0.633));
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.419);
+    border: 0;
+}
+
+.div-ingre{
+    text-align: center;
+}
+
+.div_reg{
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+}
+.div_reg button{
+    position: relative;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 14px;
+    transition: .5s;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    border-radius: 5px;
+    border: 1px;
+    background: linear-gradient(to right, rgb(31, 124, 205), rgb(56, 56, 230));
+}.div_reg button:hover{
+    cursor: pointer;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.419);
+}
+
+.p-log{
+    padding: 0;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 900;
+}

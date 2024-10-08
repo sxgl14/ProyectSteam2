@@ -1,0 +1,54 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+.nav{
+  margin: 15px;
+  background: transparent;
+  backdrop-filter: blur(40px);
+  padding: 10px;
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(227, 228, 237, .37);
+  border: 2px solid rgba(255, 255, 255, .18);
+}
+
+.container-fluid
+{
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.links
+{
+  display: flex;
+  text-decoration: none;
+}.links a{
+  color: white;
+}
+
+.link-close a
+{
+  text-decoration: none;
+  color: white;
+}
+
+.contain{
+  margin: 0;
+}
+
+footer
+{
+  color: white;
+  text-align: center;
+}
